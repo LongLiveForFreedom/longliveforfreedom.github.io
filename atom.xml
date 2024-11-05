@@ -45,10 +45,12 @@
  &lt;code&gt;$ npm install pm2 -g&lt;/code&gt; &lt;br&gt;
  &lt;code&gt;$ pm2 completion install&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;check process list&lt;br&gt;
- &lt;code&gt;$ pm2 ls&lt;/code&gt; &lt;br&gt;
-&lt;img data-src=&#34;Remote-Control-with-RustDesk/image.png&#34; alt=&#34;alt text&#34;&gt;&lt;/li&gt;
+ &lt;code&gt;$ pm2 ls&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;img data-src=&#34;/2024/11/05/Remote-Control-with-RustDesk/image.png&#34; class title=&#34;pm list&#34;&gt;
+&lt;ul&gt;
 &lt;li&gt;enter the  directory hbbs and hbbr and run them respectively&lt;br&gt;
  &lt;code&gt;$ cd /Rustdesk/rustdesk-server-hbbs_1.1.11-1_arm64/data/usr/bin&lt;/code&gt; &lt;br&gt;
  &lt;code&gt;$ pm2 start hbbs&lt;/code&gt; &lt;br&gt;
@@ -65,8 +67,8 @@
 &lt;h3 id=&#34;zerotier&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#zerotier&#34;&gt;#&lt;/a&gt; Zerotier&lt;/h3&gt;
 &lt;p&gt;Register a zerotier account(&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuemVyb3RpZXIuY29tLw==&#34;&gt;https://www.zerotier.com/&lt;/span&gt;) and create a network. Join the network in all three devices. Log in to the zerotier official website, enter the network, tick these devices, and authorize them. Get the IP address of these 3 devices&lt;/p&gt;
 &lt;h2 id=&#34;lets-go&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#lets-go&#34;&gt;#&lt;/a&gt; Let’s Go&lt;/h2&gt;
-&lt;p&gt;&lt;img data-src=&#34;Remote-Control-with-RustDesk/image2.png&#34; alt=&#34;alt text&#34;&gt;&lt;br&gt;
-In both of control end and controlled end, 点击 ID 旁边的三个点选择 Network，然后解锁，ID server 和 Relay server 均填入 relay server 的内网 IP，api server 不填，key 中填入此前保存的 hbbs key。Control end 中输入 controlled end 的 ID 即可连接。&lt;/p&gt;
+&lt;img data-src=&#34;/2024/11/05/Remote-Control-with-RustDesk/image2.png&#34; class title=&#34;rustdesk&#34;&gt;
+&lt;p&gt;In both of control end and controlled end, 点击 ID 旁边的三个点选择 Network，然后解锁，ID server 和 Relay server 均填入 relay server 的内网 IP，api server 不填，key 中填入此前保存的 hbbs key。Control end 中输入 controlled end 的 ID 即可连接。&lt;/p&gt;
 &lt;!-- ---
 
 date: 2024-11-05 22:30:01
