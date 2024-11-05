@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>http://example.com</id>
+    <title>Hexo</title>
+    <subtitle></subtitle>
+    <icon>http://example.com/images/favicon.ico</icon>
+    <link href="http://example.com" />
+    <author>
+      <name>Eren New</name>
+    </author>
+    <updated>2024-11-05T14:43:46.000Z</updated>
+    <entry>
+        <id>http://example.com/2024/11/05/Remote-Control-with-RustDesk/</id>
+        <title>Remote Control with RustDesk</title>
+        <link rel="alternate" href="http://example.com/2024/11/05/Remote-Control-with-RustDesk/"/>
+        <content type="html">&lt;h1 id=&#34;remote-control-with-rustdesk-and-zerotiermacbook-as-control-end-ubuntu-as-controlled-end-raspberrypi4b-as-relay-server&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#remote-control-with-rustdesk-and-zerotiermacbook-as-control-end-ubuntu-as-controlled-end-raspberrypi4b-as-relay-server&#34;&gt;#&lt;/a&gt; Remote Control with rustdesk and zerotier(Macbook as control end, ubuntu as controlled end, raspberrypi4B as relay server)&lt;/h1&gt;
+&lt;h2 id=&#34;preface&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#preface&#34;&gt;#&lt;/a&gt; Preface&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;macbook: m1 pro&lt;/li&gt;
+&lt;li&gt;raspberry pi 4B with 4G ram and Ubuntu 20&lt;/li&gt;
+&lt;li&gt;linux PC with ubuntu 20.04&lt;/li&gt;
+&lt;li&gt;课题组的服务器在 1 楼，工位在 4 楼，因此需要远程。todesk 和向日葵免费版的都很糊而且 todesk 免费时长有限又需要经常登陆微信，不好用。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;prepare&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#prepare&#34;&gt;#&lt;/a&gt; Prepare&lt;/h2&gt;
+&lt;h3 id=&#34;control-end&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#control-end&#34;&gt;#&lt;/a&gt; Control end&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;download rustdesk for mac: 官网 https://rustdesk.com/，选择 macos arm64 下载&lt;/li&gt;
+&lt;li&gt;download zerotier(make sure that ssh is working)&lt;br&gt;
+ &lt;code&gt;curl -s https://install.zerotier.com | sudo bash&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;controlled-end&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#controlled-end&#34;&gt;#&lt;/a&gt; Controlled end&lt;/h3&gt;
+&lt;p&gt;与控制端同理&lt;/p&gt;
+&lt;h3 id=&#34;relay-server&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#relay-server&#34;&gt;#&lt;/a&gt; Relay server&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;download zerotier as before&lt;/li&gt;
+&lt;li&gt;download rustdesk-server(Note that it’s not rustdesk, it’s rustdesk-server, i.e. the rustdesk server) in here &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3J1c3RkZXNrL3J1c3RkZXNrLXNlcnZlci9yZWxlYXNlcw==&#34;&gt;https://github.com/rustdesk/rustdesk-server/releases&lt;/span&gt;, download hbbs-arm64 and hbbr-arm64(raspberry pi is arm architecture) then unzip&lt;/li&gt;
+&lt;li&gt;pm2 is used to manage process hbbs and hbbr, so nodejs and npm are needed
+&lt;ul&gt;
+&lt;li&gt;install nodejs&lt;br&gt;
+ &lt;code&gt;$ sudo apt install nodejs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;install npm&lt;br&gt;
+ &lt;code&gt;$ sudo apt install npm&lt;/code&gt; &lt;br&gt;
+ &lt;code&gt;$ npm install -g n&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;install pm2&lt;br&gt;
+ &lt;code&gt;$ npm install pm2 -g&lt;/code&gt; &lt;br&gt;
+ &lt;code&gt;$ pm2 completion install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;check process list&lt;br&gt;
+ &lt;code&gt;$ pm2 ls&lt;/code&gt; &lt;br&gt;
+&lt;img data-src=&#34;Remote-Control-with-RustDesk/image.png&#34; alt=&#34;alt text&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;enter the  directory hbbs and hbbr and run them respectively&lt;br&gt;
+ &lt;code&gt;$ cd /Rustdesk/rustdesk-server-hbbs_1.1.11-1_arm64/data/usr/bin&lt;/code&gt; &lt;br&gt;
+ &lt;code&gt;$ pm2 start hbbs&lt;/code&gt; &lt;br&gt;
+ &lt;code&gt;$ cd /Rustdesk/rustdesk-server-hbbr_1.1.11-1_arm64/data/usr/bin&lt;/code&gt; &lt;br&gt;
+ &lt;code&gt;$ pm2 start hbbr&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;copy the key in the file with pub suffix in the hbbs folder and it will be used later&lt;/li&gt;
+&lt;li&gt;Open these ports on the firewall:
+&lt;ul&gt;
+&lt;li&gt;TCP(21115, 21116, 21117, 21118, 21119)&lt;/li&gt;
+&lt;li&gt;UDP(21116)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;zerotier&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#zerotier&#34;&gt;#&lt;/a&gt; Zerotier&lt;/h3&gt;
+&lt;p&gt;Register a zerotier account(&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly93d3cuemVyb3RpZXIuY29tLw==&#34;&gt;https://www.zerotier.com/&lt;/span&gt;) and create a network. Join the network in all three devices. Log in to the zerotier official website, enter the network, tick these devices, and authorize them. Get the IP address of these 3 devices&lt;/p&gt;
+&lt;h2 id=&#34;lets-go&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#lets-go&#34;&gt;#&lt;/a&gt; Let’s Go&lt;/h2&gt;
+&lt;p&gt;&lt;img data-src=&#34;Remote-Control-with-RustDesk/image2.png&#34; alt=&#34;alt text&#34;&gt;&lt;br&gt;
+In both of control end and controlled end, 点击 ID 旁边的三个点选择 Network，然后解锁，ID server 和 Relay server 均填入 relay server 的内网 IP，api server 不填，key 中填入此前保存的 hbbs key。Control end 中输入 controlled end 的 ID 即可连接。&lt;/p&gt;
+&lt;!-- ---
+
+date: 2024-11-05 22:30:01
+tags:
+--- --&gt;</content>
+        <updated>2024-11-05T14:43:46.000Z</updated>
+    </entry>
+    <entry>
+        <id>http://example.com/2024/11/05/hello-world/</id>
+        <title>Hello World</title>
+        <link rel="alternate" href="http://example.com/2024/11/05/hello-world/"/>
+        <content type="html">&lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
+&lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo new &lt;span class=&#34;string&#34;&gt;&amp;quot;My New Post&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s&#34;&gt;Writing&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;run-server&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#run-server&#34;&gt;#&lt;/a&gt; Run server&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=&#34;&gt;Server&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;generate-static-files&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#generate-static-files&#34;&gt;#&lt;/a&gt; Generate static files&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s&#34;&gt;Generating&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
+</content>
+        <updated>2024-11-05T10:14:38.681Z</updated>
+    </entry>
+</feed>
