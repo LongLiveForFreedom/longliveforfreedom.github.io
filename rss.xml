@@ -101,7 +101,9 @@ put the picture in file with the same name of the new blog&lt;/p&gt;
  &lt;code&gt;sudo git checkout src&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;pull your local source code to the repo&lt;br&gt;
  &lt;code&gt;sudo git push origin src:src&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;every time update following commands are needed&lt;/li&gt;
 &lt;/ul&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;sudo git add .&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sudo git commit -m &amp;quot;xxx&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sudo git checkout src&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sudo git push origin src:src&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
  ]]></description>
         </item>
         <item>
