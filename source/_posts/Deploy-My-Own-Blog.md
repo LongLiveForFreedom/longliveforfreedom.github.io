@@ -14,7 +14,7 @@ without sudo may encounter permission issues result in install fail
 - init your blog folder
 `hexo init blog`
 `cd blog`
-![](./Deploy-My-Own-Blog/Screenshot%202024-11-06%20at%2014.09.59.png)
+![opration](./Deploy-My-Own-Blog/image.png)
 - install some dependencies
 `sudo npm install`
 `sudo npm install hexo-deployer-git --save`
@@ -41,3 +41,23 @@ deploy:
 ## Create a new blog
 `hexo new "new blog name"`
 put the picture in file with the same name of the new blog
+## Back up the source code in another branch of the repo
+refer to https://blog.51cto.com/u_14233037/5824524
+- enter the .deploy_git(hidden file) folder
+`cd .deploy_git`
+- create a branch called src
+`sudo git branch src`
+- then copy the .git(also hidden) file to the blog path(parent directory)
+- associate the path to the repo
+`sudo git remote add origin https://github.com/username/username.github.io.git`
+- run the command you will see the repo info
+`sudo git remote show origin`
+- 添加保存改动
+```shell
+sudo git add .
+sudo git commit -m "source code updata"
+```
+- change to the src branch
+`sudo git checkout src`
+- pull your local source code to the repo
+`sudo git push origin src:src`
