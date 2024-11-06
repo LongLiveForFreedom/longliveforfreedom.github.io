@@ -56,6 +56,27 @@ visit &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2xvY2FsaG9zdDo0MDAw
 &lt;h2 id=&#34;create-a-new-blog&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-blog&#34;&gt;#&lt;/a&gt; Create a new blog&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;hexo new &amp;quot;new blog name&amp;quot;&lt;/code&gt; &lt;br&gt;
 put the picture in file with the same name of the new blog&lt;/p&gt;
+&lt;h2 id=&#34;back-up-the-source-code-in-another-branch-of-the-repo&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#back-up-the-source-code-in-another-branch-of-the-repo&#34;&gt;#&lt;/a&gt; Back up the source code in another branch of the repo&lt;/h2&gt;
+&lt;p&gt;refer to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLjUxY3RvLmNvbS91XzE0MjMzMDM3LzU4MjQ1MjQ=&#34;&gt;https://blog.51cto.com/u_14233037/5824524&lt;/span&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;enter the .deploy_git(hidden file) folder&lt;br&gt;
+ &lt;code&gt;cd .deploy_git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;create a branch called src&lt;br&gt;
+ &lt;code&gt;sudo git branch src&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;then copy the .git(also hidden) file to the blog path(parent directory)&lt;/li&gt;
+&lt;li&gt;associate the path to the repo&lt;br&gt;
+ &lt;code&gt;sudo git remote add origin https://github.com/username/username.github.io.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;run the command you will see the repo info&lt;br&gt;
+ &lt;code&gt;sudo git remote show origin&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;添加保存改动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;sudo git add .&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sudo git commit -m &amp;quot;source code updata&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;change to the src branch&lt;br&gt;
+ &lt;code&gt;sudo git checkout src&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;pull your local source code to the repo&lt;br&gt;
+ &lt;code&gt;sudo git push origin src:src&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
         <updated>2024-11-06T05:39:36.000Z</updated>
     </entry>
