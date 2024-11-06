@@ -61,3 +61,10 @@ sudo git commit -m "source code updata"
 `sudo git checkout src`
 - pull your local source code to the repo
 `sudo git push origin src:src`
+- every time update following commands are needed
+```shell
+sudo git add .
+sudo git commit -m "xxx"
+sudo git checkout src
+sudo git push origin src:src
+```
