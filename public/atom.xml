@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>http://longliveforfreedom.github.io</id>
     <title>Study Notes</title>
     <subtitle></subtitle>
-    <icon>http://example.com/images/favicon.ico</icon>
-    <link href="http://example.com" />
+    <icon>http://longliveforfreedom.github.io/images/favicon.ico</icon>
+    <link href="http://longliveforfreedom.github.io" />
     <author>
       <name>Eren New</name>
     </author>
-    <updated>2024-11-06T07:40:52.933Z</updated>
+    <updated>2024-11-06T08:54:04.531Z</updated>
     <entry>
-        <id>http://example.com/2024/11/06/hello-world/</id>
+        <id>http://longliveforfreedom.github.io/2024/11/06/hello-world/</id>
         <title>Hello World</title>
-        <link rel="alternate" href="http://example.com/2024/11/06/hello-world/"/>
+        <link rel="alternate" href="http://longliveforfreedom.github.io/2024/11/06/hello-world/"/>
         <content type="html">&lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
 &lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
@@ -28,12 +28,12 @@
 &lt;figure class=&#34;highlight bash&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
 </content>
-        <updated>2024-11-06T07:40:52.933Z</updated>
+        <updated>2024-11-06T08:54:04.531Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/11/06/Deploy-My-Own-Blog/</id>
+        <id>http://longliveforfreedom.github.io/2024/11/06/Deploy-My-Own-Blog/</id>
         <title>Deploy My Own Blog</title>
-        <link rel="alternate" href="http://example.com/2024/11/06/Deploy-My-Own-Blog/"/>
+        <link rel="alternate" href="http://longliveforfreedom.github.io/2024/11/06/Deploy-My-Own-Blog/"/>
         <content type="html">&lt;h1 id=&#34;deploy-my-own-blog-with-hexotheme-shoka-and-github&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#deploy-my-own-blog-with-hexotheme-shoka-and-github&#34;&gt;#&lt;/a&gt; Deploy my own blog with hexo(theme: Shoka) and github&lt;/h1&gt;
 &lt;h2 id=&#34;prepare&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#prepare&#34;&gt;#&lt;/a&gt; Prepare&lt;/h2&gt;
 &lt;ul&gt;
@@ -97,14 +97,16 @@ put the picture in file with the same name of the new blog&lt;/p&gt;
  &lt;code&gt;sudo git checkout src&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;pull your local source code to the repo&lt;br&gt;
  &lt;code&gt;sudo git push origin src:src&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;every time update following commands are needed&lt;/li&gt;
 &lt;/ul&gt;
+&lt;figure class=&#34;highlight shell&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;sudo git add .&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sudo git commit -m &amp;quot;xxx&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sudo git checkout src&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sudo git push origin src:src&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 </content>
         <updated>2024-11-06T05:39:36.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/11/05/Remote-Control-with-RustDesk/</id>
+        <id>http://longliveforfreedom.github.io/2024/11/05/Remote-Control-with-RustDesk/</id>
         <title>Remote Control with RustDesk</title>
-        <link rel="alternate" href="http://example.com/2024/11/05/Remote-Control-with-RustDesk/"/>
+        <link rel="alternate" href="http://longliveforfreedom.github.io/2024/11/05/Remote-Control-with-RustDesk/"/>
         <content type="html">&lt;h1 id=&#34;remote-control-with-rustdesk-and-zerotiermacbook-as-control-end-ubuntu-as-controlled-end-raspberrypi4b-as-relay-server&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#remote-control-with-rustdesk-and-zerotiermacbook-as-control-end-ubuntu-as-controlled-end-raspberrypi4b-as-relay-server&#34;&gt;#&lt;/a&gt; Remote Control with rustdesk and zerotier(Macbook as control end, ubuntu as controlled end, raspberrypi4B as relay server)&lt;/h1&gt;
 &lt;h2 id=&#34;preface&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#preface&#34;&gt;#&lt;/a&gt; Preface&lt;/h2&gt;
 &lt;ul&gt;

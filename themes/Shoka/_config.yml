@@ -260,7 +260,11 @@ exturl: true
 
 # Google Webmaster tools verification.
 # See: https://www.google.com/webmasters
-google_site_verification:
+google_site_verification: DnbFO9RZ4XdwE2vXJZ4ctnyqNq9mwVTNkp-cuO9aiho
+google_analytics: 
+  tracking_id: G-J2HGPC9E09
+  localhost_ignored: true
+  only_pageview: false
 
 # Bing Webmaster tools verification.
 # See: https://www.bing.com/webmaster
