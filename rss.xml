@@ -23,13 +23,7 @@
 &lt;li&gt;the official env of HiVT is pytorch 1.8, python 3.8, pytorch-geometric 1.7.2, pytorch-lightning 1.5.2 and cuda 11.1, which versions are too early. So, this blog will deploy HiVT with higher version of torch&amp;amp;pl with python 3.10, pytorch 2.1.0, pytorch-lightning 2.0.3, PyG 2.3.1 and cuda 12.1.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;preparation&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#preparation&#34;&gt;#&lt;/a&gt; Preparation&lt;/h1&gt;
-&lt;p&gt;‘’’&lt;br&gt;
-conda create -n HiVT python=3.10&lt;br&gt;
-conda activate HiVT&lt;br&gt;
-conda install pytorch&lt;mark&gt;2.1.0 cudatoolkit=12.1 -c pytorch -c conda -forge&lt;br&gt;
-conda install pytorch-geometric&lt;/mark&gt;2.3.1 -c rusty1s -c conda-forge&lt;br&gt;
-conda install pytorch-lightning==2.0.3 -c conda-forge&lt;br&gt;
-‘’’&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;conda create -n HiVT python=3.10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;conda activate HiVT&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;conda install pytorch==2.1.0 cudatoolkit=12.1 -c pytorch -c conda -forge&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;conda install pytorch-geometric==2.3.1 -c rusty1s -c conda-forge&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;conda install pytorch-lightning==2.0.3 -c conda-forge&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h1 id=&#34;modification-of-hivt-src&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#modification-of-hivt-src&#34;&gt;#&lt;/a&gt; Modification of hivt src&lt;/h1&gt;
 &lt;h2 id=&#34;trainpy&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#trainpy&#34;&gt;#&lt;/a&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL3RyYWluLnB5&#34;&gt;train.py&lt;/span&gt;&lt;/h2&gt;
 &lt;ul&gt;
@@ -56,14 +50,11 @@ conda install pytorch-lightning==2.0.3 -c conda-forge&lt;br&gt;
 &lt;p&gt;the new version of nn.Transformer add a parameter is_causal so it should be added in the TemporalEncoder class, which employs nn.TransformerEncoder as transformer_encoder variable&lt;/p&gt;
 
 &lt;h1 id=&#34;modification-of-pyg-code&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#modification-of-pyg-code&#34;&gt;#&lt;/a&gt; Modification of PyG code&lt;/h1&gt;
-&lt;p&gt;find the &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2NvbGxhdGUucHk=&#34;&gt;collate.py&lt;/span&gt; in the directory .conda/envs/{your env name}/lib/python3.10/site-pacakages/torch_geometric/data/collate.py. Then find the get_incs function and delete the input variable &#39;store&#39; of data.__inc__()
-&#39;&#39;&#39;
-cd .conda/envs/{your env name}/lib/python3.10/site-pacakages/torch_geometric/data&lt;br&gt;
-gedit &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2NvbGxhdGUucHk=&#34;&gt;collate.py&lt;/span&gt;&lt;br&gt;
-‘’’&lt;/p&gt;
+&lt;p&gt;find the &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2NvbGxhdGUucHk=&#34;&gt;collate.py&lt;/span&gt; in the directory .conda/envs/${your env name}/lib/python3.10/site-pacakages/torch_geometric/data/collate.py. Then find the get_incs function and delete the input variable ‘store’ of data.&lt;strong&gt;inc&lt;/strong&gt;()&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;cd .conda/envs/$&amp;#123;your env name&amp;#125;/lib/python3.10/site-pacakages/torch_geometric/data&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;gedit collate.py&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 
 &lt;h1 id=&#34;others&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#others&#34;&gt;#&lt;/a&gt; Others&lt;/h1&gt;
-&lt;p&gt;If you encounter problems about variables, try to add ‘**kwargs’ in forward() function may be help&lt;/p&gt;
+&lt;p&gt;If you encounter problems about variables, add ‘**kwargs’ in forward() function may be help&lt;/p&gt;
 &lt;h1 id=&#34;now-you-can-try-to-train-hivt-follow-the-official-doc&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#now-you-can-try-to-train-hivt-follow-the-official-doc&#34;&gt;#&lt;/a&gt; Now you can try to train HiVT follow the official doc&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;official doc: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1ppa2FuZ1pob3UvSGlWVA==&#34;&gt;https://github.com/ZikangZhou/HiVT&lt;/span&gt;&lt;/li&gt;
