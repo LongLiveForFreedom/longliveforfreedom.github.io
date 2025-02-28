@@ -126,6 +126,9 @@ visit &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2xvY2FsaG9zdDo0MDAw
 &lt;h2 id=&#34;create-a-new-blog&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-blog&#34;&gt;#&lt;/a&gt; Create a new blog&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;hexo new &amp;quot;new blog name&amp;quot;&lt;/code&gt; &lt;br&gt;
 put the picture in file with the same name of the new blog&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;note: the title should not include special symbol such as ‘&amp;amp;’&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;back-up-the-source-code-in-another-branch-of-the-repo&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#back-up-the-source-code-in-another-branch-of-the-repo&#34;&gt;#&lt;/a&gt; Back up the source code in another branch of the repo&lt;/h2&gt;
 &lt;p&gt;refer to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLjUxY3RvLmNvbS91XzE0MjMzMDM3LzU4MjQ1MjQ=&#34;&gt;https://blog.51cto.com/u_14233037/5824524&lt;/span&gt;&lt;/p&gt;
 &lt;ul&gt;
