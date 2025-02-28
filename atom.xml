@@ -8,11 +8,11 @@
     <author>
       <name>Eren New</name>
     </author>
-    <updated>2025-02-27T09:40:29.000Z</updated>
+    <updated>2025-02-28T07:11:57.000Z</updated>
     <entry>
-        <id>http://longliveforfreedom.github.io/2025/02/27/Implement-HiVT-with-Latest-pytorch-pl-Version/</id>
-        <title>Implement-HiVT-with-Latest-pytorch&amp;pl-Version</title>
-        <link rel="alternate" href="http://longliveforfreedom.github.io/2025/02/27/Implement-HiVT-with-Latest-pytorch-pl-Version/"/>
+        <id>http://longliveforfreedom.github.io/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/</id>
+        <title>Implement-HiVT-with-Latest-pytorch-and-pl-Version</title>
+        <link rel="alternate" href="http://longliveforfreedom.github.io/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/"/>
         <content type="html">&lt;h1 id=&#34;implementdeploy-hivt-with-latest-pytorchpytorch-lightning-version&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#implementdeploy-hivt-with-latest-pytorchpytorch-lightning-version&#34;&gt;#&lt;/a&gt; Implement(deploy) HiVT with latest pytorch&amp;amp;pytorch-lightning version&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;refer to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2tkZGIxMjM0L2FydGljbGUvZGV0YWlscy8xMzY4MzEyNTg=&#34;&gt;https://blog.csdn.net/kddb1234/article/details/136831258&lt;/span&gt;, &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3B5Zy10ZWFtL3B5dG9yY2hfZ2VvbWV0cmljL2lzc3Vlcy80MzU4&#34;&gt;https://github.com/pyg-team/pytorch_geometric/issues/4358&lt;/span&gt; and &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2d6ZXJ2ZWFzL212dHNfdHJhbnNmb3JtZXIvaXNzdWVzLzY4&#34;&gt;https://github.com/gzerveas/mvts_transformer/issues/68&lt;/span&gt;&lt;/li&gt;
@@ -25,30 +25,30 @@
 &lt;ul&gt;
 &lt;li&gt;the “gpus” in parser should be changed to “devices”&lt;/li&gt;
 &lt;/ul&gt;
-
+&lt;img data-src=&#34;/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/1.png&#34; class title=&#34;gpus&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;the ArgoverseV1DataModule has no from_argoverse_args function any more, it can be input directly like:&lt;/li&gt;
 &lt;/ul&gt;
-
+&lt;img data-src=&#34;/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/2.png&#34; class title=&#34;datamodule&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;similarly to the pl.Trainer&lt;/li&gt;
 &lt;/ul&gt;
-
+&lt;img data-src=&#34;/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/3.png&#34; class title=&#34;trainer&#34;&gt;
 &lt;h2 id=&#34;adepy&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#adepy&#34;&gt;#&lt;/a&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2FkZS5weQ==&#34;&gt;ade.py&lt;/span&gt; and other metrics&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;the compute_on_step parameter is no need, just delete it from the input parameter of &lt;strong&gt;init&lt;/strong&gt; function&lt;/li&gt;
 &lt;/ul&gt;
-
+&lt;img data-src=&#34;/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/4.png&#34; class title=&#34;metrics&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;same applies to other py files in the metrics directory&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;local_encoderpy&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#local_encoderpy&#34;&gt;#&lt;/a&gt; local_encoder.py&lt;/h2&gt;
 &lt;p&gt;the new version of nn.Transformer add a parameter is_causal so it should be added in the TemporalEncoder class, which employs nn.TransformerEncoder as transformer_encoder variable&lt;/p&gt;
-
+&lt;img data-src=&#34;/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/5.png&#34; class title=&#34;is_causal&#34;&gt;
 &lt;h1 id=&#34;modification-of-pyg-code&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#modification-of-pyg-code&#34;&gt;#&lt;/a&gt; Modification of PyG code&lt;/h1&gt;
 &lt;p&gt;find the &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2NvbGxhdGUucHk=&#34;&gt;collate.py&lt;/span&gt; in the directory .conda/envs/${your env name}/lib/python3.10/site-pacakages/torch_geometric/data/collate.py. Then find the get_incs function and delete the input variable ‘store’ of data.&lt;strong&gt;inc&lt;/strong&gt;()&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;cd .conda/envs/$&amp;#123;your env name&amp;#125;/lib/python3.10/site-pacakages/torch_geometric/data&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;gedit collate.py&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
+&lt;img data-src=&#34;/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/6.png&#34; class title=&#34;pyg&#34;&gt;
 &lt;h1 id=&#34;others&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#others&#34;&gt;#&lt;/a&gt; Others&lt;/h1&gt;
 &lt;p&gt;If you encounter problems about variables, add ‘**kwargs’ in forward() function may be help&lt;/p&gt;
 &lt;h1 id=&#34;now-you-can-try-to-train-hivt-follow-the-official-doc&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#now-you-can-try-to-train-hivt-follow-the-official-doc&#34;&gt;#&lt;/a&gt; Now you can try to train HiVT follow the official doc&lt;/h1&gt;
@@ -56,7 +56,7 @@
 &lt;li&gt;official doc: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL1ppa2FuZ1pob3UvSGlWVA==&#34;&gt;https://github.com/ZikangZhou/HiVT&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </content>
-        <updated>2025-02-27T09:40:29.000Z</updated>
+        <updated>2025-02-28T07:11:57.000Z</updated>
     </entry>
     <entry>
         <id>http://longliveforfreedom.github.io/2024/11/06/hello-world/</id>
