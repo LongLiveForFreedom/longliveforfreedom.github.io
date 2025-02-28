@@ -35,7 +35,7 @@
 &lt;/ul&gt;
 &lt;img data-src=&#34;/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/2.png&#34; class title=&#34;datamodule&#34;&gt;
 &lt;ul&gt;
-&lt;li&gt;similarly to the pl.Trainer&lt;/li&gt;
+&lt;li&gt;similarly to the datamodule, pl.Trainer should also be fixed&lt;/li&gt;
 &lt;/ul&gt;
 &lt;img data-src=&#34;/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/3.png&#34; class title=&#34;trainer&#34;&gt;
 &lt;h2 id=&#34;adepy&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#adepy&#34;&gt;#&lt;/a&gt; &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cDovL2FkZS5weQ==&#34;&gt;ade.py&lt;/span&gt; and other metrics&lt;/h2&gt;
