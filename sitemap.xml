@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://longliveforfreedom.github.io/2024/11/05/Remote-Control-with-RustDesk/</loc>
+    
+    <lastmod>2025-03-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://longliveforfreedom.github.io/2025/02/28/Implement-HiVT-with-Latest-pytorch-and-pl-Version/</loc>
     
     <lastmod>2025-02-28</lastmod>
@@ -28,19 +37,10 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://longliveforfreedom.github.io/2024/11/05/Remote-Control-with-RustDesk/</loc>
-    
-    <lastmod>2024-11-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>http://longliveforfreedom.github.io/</loc>
-    <lastmod>2025-02-28</lastmod>
+    <lastmod>2025-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

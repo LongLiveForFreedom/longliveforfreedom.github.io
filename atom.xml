@@ -215,6 +215,9 @@ put the picture in file with the same name of the new blog&lt;/p&gt;
 &lt;h2 id=&#34;lets-go&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#lets-go&#34;&gt;#&lt;/a&gt; Let’s Go&lt;/h2&gt;
 &lt;img data-src=&#34;/2024/11/05/Remote-Control-with-RustDesk/image2.png&#34; class title=&#34;rustdesk&#34;&gt;
 &lt;p&gt;In both of control end and controlled end, 点击 ID 旁边的三个点选择 Network，然后解锁，ID server 和 Relay server 均填入 relay server 的内网 IP，api server 不填，key 中填入此前保存的 hbbs key。Control end 中输入 controlled end 的 ID 即可连接。&lt;/p&gt;
+&lt;h1 id=&#34;some-problems&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#some-problems&#34;&gt;#&lt;/a&gt; Some Problems&lt;/h1&gt;
+&lt;p&gt;these may work&lt;br&gt;
+&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3J1c3RkZXNrL3J1c3RkZXNrL2lzc3Vlcy80NDAjaXNzdWUtMTE5MTAyMDIyNQ==&#34;&gt;https://github.com/rustdesk/rustdesk/issues/440#issue-1191020225&lt;/span&gt;&lt;/p&gt;
 &lt;!-- ---
 
 date: 2024-11-05 22:30:01
